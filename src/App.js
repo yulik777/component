@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import styles from './App.css';
 
 import Cat from './components/Cat';
 
@@ -11,7 +11,8 @@ const cats = [
   },
   {
     name:"Барсик",
-    url:"https://www.sunny-cat.ru/datas/users/1-olnara007.jpg"
+    url:"https://www.sunny-cat.ru/datas/users/1-olnara007.jpg",
+    isSelected: true
   },
   {
     name:"Лунтик",
@@ -22,14 +23,19 @@ const cats = [
 class App extends React.Component { // классовый компонент
   render() {
   return (
-    <div className="App"> 
+    <div>
+    <div className={this.props.theme.App}>
     {
       cats.map((cat) =>
-      <Cat name={cat.name} url={cat.url} text={cat.text} ></Cat>
+      <Cat name={cat.name} url={cat.url} text={cat.text} 
+      isSelected={cat.isSelected}></Cat>
       )
-    }
+  }
+</div>
+    <div className="App-button-container">
+      <button className='button'>Try now</button>
     </div>
-    
+    </div>
   );
 }
 }
@@ -44,3 +50,4 @@ export default App;
     <Cat name="Снежок"url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnYtJewuffJ_fR_hVmH5_X-JxCt0OLkagAQuXJAN2zGxA-z4kTpdtGkuiFmhQU85uwC0s&usqp=CAU"></Cat> 
     </div>*/
 // <Cat name={cat.name}></Cat> в {} пишутся переменные
+// <div className={this.props.theme.App}> выбиратем тему, которая прописана в index.js
